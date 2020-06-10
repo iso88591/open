@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         contentView.testModel = model
 
-        model.indexArticle.set(IndexArticle(datas = listOf(Data("sdgsdgsdgsdg"))))
-
         contentView.tvTest.setOnClickListener {
 
             NetConfig.WanAndroid.get().indexArticleList(1)

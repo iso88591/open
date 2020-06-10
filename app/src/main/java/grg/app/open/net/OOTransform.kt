@@ -1,10 +1,10 @@
 package grg.app.open.net
 
 import grg.app.open.ObserverObservable
-import grg.app.open.net.bean.Data
 
 class OOTransform<Data>(
     val target: ObserverObservable<Data?>,
+    val onFinished: (() -> Unit)? = null,
     val errorDispatcher: (ApiWrapper<Data>.() -> Unit)? = null
 ) : ObserverObservable<ApiWrapper<Data>>() {
 
@@ -15,6 +15,7 @@ class OOTransform<Data>(
             errorDispatcher?.invoke(t)
             target.onChanged(null)
         }
+        onFinished?.invoke()
     }
 
 }
