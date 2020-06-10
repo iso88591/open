@@ -1,6 +1,6 @@
 package grg.app.open.net
 
-import grg.app.open.ObserverObservable
+import grg.app.open.app.ObserverObservable
 
 class OOTransform<Data>(
     val target: ObserverObservable<Data?>,

@@ -1,4 +1,4 @@
-package grg.app.open
+package grg.app.open.app
 
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
