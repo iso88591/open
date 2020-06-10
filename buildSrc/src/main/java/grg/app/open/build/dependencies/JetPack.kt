@@ -87,20 +87,6 @@ class JetPack :
 
             implementation(Lib.activity_ktx)
 
-
-//            implementation deps.app_compat
-//                    implementation deps.material
-//                    implementation deps.core_ktx
-//                    implementation deps.lifecycle.viewmodel_ktx
-//                    implementation deps.lifecycle.livedata_ktx
-//                    implementation deps.activity.activity_ktx
-
-
-            /**
-            lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
-            lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"*
-             */
-
             //jet pack 内容
             //基础
             //
