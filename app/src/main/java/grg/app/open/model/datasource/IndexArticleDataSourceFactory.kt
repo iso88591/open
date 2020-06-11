@@ -38,7 +38,7 @@ class IndexArticleDataSourceFactory : DataSource.Factory<Int, Data>() {
         ) {
 
             request(1) { list, i ->
-                callback.onResult(list, null, i)
+                callback.onResult(list, null, 2)
             }
 
         }

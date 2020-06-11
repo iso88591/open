@@ -42,7 +42,7 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
         }
 
         indexViewModel.indexArticle.observe(this, Observer {
-            mAdapter.addData(it)
+            mAdapter.submitList(it)
         })
 
 
