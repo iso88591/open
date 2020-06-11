@@ -1,8 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <!--
+
+            {
+        "apkLink": "",
+        "audit": 1,
+        "author": "code小生",
+        "canEdit": false,
+        "chapterId": 414,
+        "chapterName": "code小生",
+        "collect": false,
+        "courseId": 13,
+        "desc": "",
+        "descMd": "",
+        "envelopePic": "",
+        "fresh": false,
+        "id": 13811,
+        "link": "https://mp.weixin.qq.com/s/vitO26SF8kS2i1YV2kFYvg",
+        "niceDate": "2020-06-08 00:00",
+        "niceShareDate": "2天前",
+        "origin": "",
+        "prefix": "",
+        "projectLink": "",
+        "publishTime": 1591545600000,
+        "selfVisible": 0,
+        "shareDate": 1591626952000,
+        "shareUser": "",
+        "superChapterId": 408,
+        "superChapterName": "公众号",
+        "tags": [
+          {
+            "name": "公众号",
+            "url": "/wxarticle/list/414/1"
+          }
+        ],
+        "title": "每个程序员都必须知道的 8 种通用数据结构",
+        "type": 0,
+        "userId": -1,
+        "visible": 1,
+        "zan": 0
+      }
+
+        -->
+        <import type="android.view.View" />
+        <import type="grg.app.open.app.extension.Extension_StringKt" />
+
         <variable
             name="data"
             type="grg.app.open.net.bean.Data" />
@@ -10,14 +56,154 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="90dp"
+        android:background="@drawable/touch_index_item"
+        android:clickable="true">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/v2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/v3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="30dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/h2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="10dp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_corner_4_color_accent"
+            app:layout_constraintBottom_toBottomOf="@id/h2"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/v1"
+            app:layout_constraintTop_toTopOf="@id/h1" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@mipmap/link"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintBottom_toBottomOf="@id/view1"
+            app:layout_constraintLeft_toLeftOf="@id/view1"
+            app:layout_constraintRight_toRightOf="@id/view1"
+            app:layout_constraintTop_toTopOf="@id/view1" />
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_corner_4_color_trans_40"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text='@{data.link}'
+            android:ellipsize="end"
+            android:textColor="#ffffff"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="@id/view1"
+            app:layout_constraintHeight_percent="0.45"
+            app:layout_constraintLeft_toLeftOf="@id/view1"
+            app:layout_constraintRight_toRightOf="@id/view1"
+            app:layout_constraintTop_toTopOf="@id/view1"
+            app:layout_constraintVertical_bias="1"
+            tools:text="链接:" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{data.title}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="#5A5A5A"
+            android:textSize="17sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="@id/v1"
+            app:layout_constraintRight_toLeftOf="@id/v3"
+            app:layout_constraintTop_toTopOf="@id/h1"
+            tools:text="title" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text='@{"作者: "+data.chapterName}'
+            android:textColor="#5A5A5A"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="@id/v1"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="作者:" />
+
+        <TextView
+            android:id="@+id/tvTag"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/shape_corner_4_color_primary"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="2dp"
+            android:text='@{data.tags.size()>0?data.tags.get(0).name:""}'
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp"
+            android:visibility='@{data.tags.size()>0?View.VISIBLE:View.GONE}'
+            app:layout_constraintBaseline_toBaselineOf="@id/tvAuthor"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/tvAuthor"
+            tools:text="tag" />
+
+        <TextView
+            android:id="@+id/tvClassify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text='@{"分类: "+data.chapterName}'
+            app:layout_constraintLeft_toLeftOf="@id/v1"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthor"
+            tools:text="分类:" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text='@{"时间: "+data.niceDate}'
+            android:textColor="#929292"
+            android:textSize="11sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvClassify"
+            app:layout_constraintLeft_toRightOf="@id/tvClassify"
+            tools:text="时间:" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
