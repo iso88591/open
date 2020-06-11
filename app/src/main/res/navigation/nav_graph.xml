@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/blankFragment"
-        android:name="grg.app.open.ui.fragment.BlankFragment"
+        android:name="grg.app.open.ui.fragment.IndexFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" />
+        tools:layout="@layout/fragment_index" />
     <fragment
         android:id="@+id/blankFragment2"
-        android:name="grg.app.open.ui.fragment.BlankFragment2"
+        android:name="grg.app.open.ui.fragment.SquareFragment"
         android:label="BlankFragment2" />
 </navigation>

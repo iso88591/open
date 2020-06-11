@@ -1,10 +1,14 @@
 package grg.app.open.net
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import grg.app.open.net.bean.IndexArticle
+import io.reactivex.Single
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,13 +18,22 @@ object NetConfig {
     interface WanAndroid {
 
         @GET("https://www.wanandroid.com/article/list/{page}/json")
-        fun indexArticleList(@Path("page") page: Int): LiveData<ApiWrapper<IndexArticle>>
+        fun indexArticleList(@Path("page") page: Int): Single<ApiWrapper<IndexArticle>>
 
         companion object {
+            const val TAG = "OpenApi"
+
             private val simpleRetrofit by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
                 retrofitFactory({
                     baseUrl("https://www.wanandroid.com")
                 }, {
+                    addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                        override fun log(message: String) {
+                            Log.d(TAG, "log: $message")
+                        }
+                    }).apply {
+                        level = HttpLoggingInterceptor.Level.BODY
+                    })
 
                 })
             }
@@ -46,6 +59,7 @@ object NetConfig {
                     ApiWrapper.error("未知错误")
 
                 })
+                addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
                 config.invoke(this)
             }

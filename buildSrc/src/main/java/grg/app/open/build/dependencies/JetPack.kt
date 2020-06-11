@@ -15,6 +15,7 @@ class JetPack :
         const val x_core = "androidx.core"
         const val x_lifecycle = "androidx.lifecycle"
         const val x_activity = "androidx.activity"
+        const val x_paging = "androidx.paging"
     }
 
     private object Version {
@@ -24,6 +25,7 @@ class JetPack :
         const val core_ktx = "1.3.0"
         const val x_lifecycle = "2.2.0"
         const val activity_ktx = "1.1.0"
+        const val x_paging = "2.1.2"
     }
 
     private object Name {
@@ -38,6 +40,7 @@ class JetPack :
         const val lifecycle_compiler = "lifecycle-compiler"
         const val lifecycle_runtime = "lifecycle-runtime"
         const val activity_ktx = "activity-ktx"
+        const val x_paging = "paging-runtime-ktx"
     }
 
     object Lib {
@@ -68,6 +71,9 @@ class JetPack :
 
         const val activity_ktx =
             "${Group.x_activity}:${Name.activity_ktx}:${Version.activity_ktx}"
+
+        const val x_paging =
+            "${Group.x_paging}:${Name.x_paging}:${Version.x_paging}"
     }
 
     override fun apply(target: Project) {
@@ -86,15 +92,7 @@ class JetPack :
             implementation(Lib.lifecycle_runtime)
 
             implementation(Lib.activity_ktx)
-
-            //jet pack 内容
-            //基础
-            //
-            //架构
-
-            //行为
-
-            //界面
+            implementation(Lib.x_paging)
 
 
         }
