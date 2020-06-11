@@ -47,7 +47,6 @@
 
         -->
         <import type="android.view.View" />
-        <import type="grg.app.open.app.extension.Extension_StringKt" />
 
         <variable
             name="data"

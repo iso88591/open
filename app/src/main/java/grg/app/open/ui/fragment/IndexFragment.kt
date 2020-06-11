@@ -9,6 +9,7 @@ import grg.app.open.R
 import grg.app.open.adapter.IndexArticleAdapter
 import grg.app.open.app.base.BaseFragment
 import grg.app.open.app.base.SimpleDivideItemDec
+import grg.app.open.app.extension.toObserver
 import grg.app.open.model.MainModel
 
 class IndexFragment : BaseFragment(R.layout.fragment_index) {
@@ -34,9 +35,7 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
             set(0, 0, 0, 1)
         })
 
-        indexViewModel.indexArticle.observe(this, Observer {
-            mAdapter.submitList(it)
-        })
+        indexViewModel.indexArticle.observe(this,mAdapter.toObserver())
 
 
     }

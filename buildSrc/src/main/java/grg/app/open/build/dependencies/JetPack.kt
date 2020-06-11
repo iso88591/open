@@ -15,6 +15,7 @@ class JetPack :
         const val x_core = "androidx.core"
         const val x_lifecycle = "androidx.lifecycle"
         const val x_activity = "androidx.activity"
+        const val x_fragment = "androidx.fragment"
         const val x_paging = "androidx.paging"
     }
 
@@ -25,6 +26,7 @@ class JetPack :
         const val core_ktx = "1.3.0"
         const val x_lifecycle = "2.2.0"
         const val activity_ktx = "1.1.0"
+        const val fragment_ktx = "1.2.4"
         const val x_paging = "2.1.2"
     }
 
@@ -40,6 +42,7 @@ class JetPack :
         const val lifecycle_compiler = "lifecycle-compiler"
         const val lifecycle_runtime = "lifecycle-runtime"
         const val activity_ktx = "activity-ktx"
+        const val fragment_ktx = "fragment-ktx"
         const val x_paging = "paging-runtime-ktx"
     }
 
@@ -72,6 +75,9 @@ class JetPack :
         const val activity_ktx =
             "${Group.x_activity}:${Name.activity_ktx}:${Version.activity_ktx}"
 
+        const val fragment_ktx =
+            "${Group.x_fragment}:${Name.fragment_ktx}:${Version.fragment_ktx}"
+
         const val x_paging =
             "${Group.x_paging}:${Name.x_paging}:${Version.x_paging}"
     }
@@ -93,6 +99,7 @@ class JetPack :
 
             implementation(Lib.activity_ktx)
             implementation(Lib.x_paging)
+            implementation(Lib.fragment_ktx)
 
 
         }
