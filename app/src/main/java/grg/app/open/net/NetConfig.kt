@@ -3,12 +3,11 @@ package grg.app.open.net
 import android.util.Log
 import androidx.lifecycle.LiveData
 import grg.app.open.net.bean.IndexArticle
-import io.reactivex.Single
+import grg.app.open.net.bean.IndexBanner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,7 +17,10 @@ object NetConfig {
     interface WanAndroid {
 
         @GET("https://www.wanandroid.com/article/list/{page}/json")
-        fun indexArticleList(@Path("page") page: Int): Single<ApiWrapper<IndexArticle>>
+        fun indexArticleList(@Path("page") page: Int): LiveData<ApiWrapper<IndexArticle>>
+
+        @GET("https://www.wanandroid.com/banner/json")
+        fun indexBanner(): LiveData<ApiWrapper<List<IndexBanner>>>
 
         companion object {
             const val TAG = "OpenApi"
@@ -59,7 +61,6 @@ object NetConfig {
                     ApiWrapper.error("未知错误")
 
                 })
-                addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
                 config.invoke(this)
             }

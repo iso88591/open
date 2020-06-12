@@ -3,16 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/blankFragment"
+        android:id="@+id/indexFragment"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="首页"
         app:showAsAction="always" />
     <item
-        android:id="@+id/blankFragment2"
+        android:id="@+id/action_indexFragment_to_squareFragment2"
         android:icon="@drawable/ic_baseline_crop_square_24"
         android:title="广场"
         app:showAsAction="always" />
     <item
+        android:id="@+id/action_squareFragment_to_wanAndroidNavFragment2"
         android:icon="@drawable/ic_baseline_navigation_24"
         android:title="导航"
         app:showAsAction="always" />

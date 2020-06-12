@@ -1,48 +1,25 @@
 package grg.app.open.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import grg.app.open.R
-import grg.app.open.app.MyApplication
+import grg.app.open.app.ObserverObservable
+import grg.app.open.app.extension.databinding
 import grg.app.open.databinding.VhIndexArticleBinding
 import grg.app.open.net.bean.Data
+import grg.app.open.net.bean.IndexArticle
 
-class IndexArticleAdapter : PagedListAdapter<Data, IndexArticleAdapter.VH>(diff) {
+class IndexArticleAdapter : BaseQuickAdapter<Data, BaseViewHolder>(R.layout.vh_index_article),
+    Observer<IndexArticle> {
 
-    val inflater by lazy { LayoutInflater.from(MyApplication.context) }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IndexArticleAdapter.VH {
-        return VH(parent)
+    override fun convert(holder: BaseViewHolder, item: Data) {
+        holder.itemView.databinding<VhIndexArticleBinding>().data = item
     }
 
-    override fun onBindViewHolder(holder: IndexArticleAdapter.VH, position: Int) {
-        holder.binding?.data = getItem(position)
-    }
-
-
-    inner class VH(parent: ViewGroup) :
-        RecyclerView.ViewHolder(inflater.inflate(R.layout.vh_index_article, parent, false)) {
-
-        val binding by lazy { DataBindingUtil.bind<VhIndexArticleBinding>(itemView) }
-
-    }
-
-    companion object {
-        val diff by lazy {
-            object : DiffUtil.ItemCallback<Data>() {
-                override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean {
-                    return oldItem.hashCode() == newItem.hashCode()
-                }
-
-                override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
-                    return oldItem.hashCode() == newItem.hashCode()
-                }
-            }
-        }
+    override fun onChanged(t: IndexArticle) {
+        addData(t!!.datas!!)
     }
 
 }

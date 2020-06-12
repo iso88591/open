@@ -5,17 +5,22 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.youth.banner.Banner
 import grg.app.open.R
 import grg.app.open.adapter.IndexArticleAdapter
+import grg.app.open.app.ObserverObservable
 import grg.app.open.app.base.BaseFragment
 import grg.app.open.app.base.SimpleDivideItemDec
-import grg.app.open.app.extension.toObserver
 import grg.app.open.model.MainModel
+import grg.app.open.net.OOTransform
+import grg.app.open.net.bean.IndexBanner
+import grg.app.open.widgets.MeRecyclerView
+import grg.app.open.widgets.SimpleBannerImageLoader
 
 class IndexFragment : BaseFragment(R.layout.fragment_index) {
 
     private val recyclerView by lazy(LazyThreadSafetyMode.NONE) {
-        mRootView.findViewById<RecyclerView>(
+        mRootView.findViewById<MeRecyclerView>(
             R.id.recyclerView
         )
     }
@@ -31,11 +36,20 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
             adapter = mAdapter
         }
 
+        val view = layoutInflater.inflate(R.layout.vh_index_banner, recyclerView, false)
+        mAdapter.addHeaderView(view)
+        val banner = view.findViewById<Banner>(R.id.banner)
+        banner.setImageLoader(SimpleBannerImageLoader)
+
+        indexViewModel.indexBanner.observe(this@IndexFragment, OOTransform(ObserverObservable<List<IndexBanner>>{
+            banner.update(it?.map { it.imagePath })
+        }))
+
         recyclerView.addItemDecoration(SimpleDivideItemDec {
             set(0, 0, 0, 1)
         })
 
-        indexViewModel.indexArticle.observe(this,mAdapter.toObserver())
+        indexViewModel.indexArticle(1).observe(this, OOTransform(mAdapter))
 
 
     }
