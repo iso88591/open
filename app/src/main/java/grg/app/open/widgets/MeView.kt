@@ -5,11 +5,18 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PointF
 import android.util.AttributeSet
+import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.recyclerview.widget.RecyclerView
 
-class MeRecyclerView @JvmOverloads constructor(
+class MeView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : RecyclerView(context, attrs, defStyleAttr) {
+) : View(context, attrs, defStyleAttr) {
+
+    init {
+        isClickable = false
+    }
 
     val str = "仅供个人学习研究 其他用途联系qq2658218247"
 
@@ -59,7 +66,11 @@ class MeRecyclerView @JvmOverloads constructor(
 
     }
 
-    init {
+    companion object {
+        val layoutParams = FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
     }
 
 }

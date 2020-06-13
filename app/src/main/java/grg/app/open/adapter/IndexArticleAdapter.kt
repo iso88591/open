@@ -4,7 +4,6 @@ import androidx.lifecycle.Observer
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import grg.app.open.R
-import grg.app.open.app.ObserverObservable
 import grg.app.open.app.extension.databinding
 import grg.app.open.databinding.VhIndexArticleBinding
 import grg.app.open.net.bean.Data

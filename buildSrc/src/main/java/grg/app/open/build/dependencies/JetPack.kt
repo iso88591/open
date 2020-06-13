@@ -98,7 +98,7 @@ class JetPack :
             implementation(Lib.lifecycle_runtime)
 
             implementation(Lib.activity_ktx)
-            implementation(Lib.x_paging)
+//            implementation(Lib.x_paging)
             implementation(Lib.fragment_ktx)
 
 
