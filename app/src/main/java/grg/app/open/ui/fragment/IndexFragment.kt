@@ -1,23 +1,26 @@
 package grg.app.open.ui.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.youth.banner.Banner
 import grg.app.open.R
 import grg.app.open.adapter.IndexArticleAdapter
+import grg.app.open.app.KEY_ARTICLE_URL
 import grg.app.open.app.component.ObserverObservable
 import grg.app.open.app.base.BaseFragment
 import grg.app.open.app.base.SimpleDivideItemDec
 import grg.app.open.app.component.bindToSmartRefreshLayout
+import grg.app.open.app.component.open
 import grg.app.open.model.MainModel
 import grg.app.open.net.OOTransform
 import grg.app.open.net.bean.IndexBanner
-import grg.app.open.widgets.MeRecyclerView
+import grg.app.open.ui.activity.ArticleDetailActivity
 import grg.app.open.widgets.SimpleBannerImageLoader
 
 class IndexFragment : BaseFragment(R.layout.fragment_index) {
@@ -34,7 +37,10 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
     }
 
     val indexViewModel by viewModels<MainModel>()
-    val mAdapter by lazy { IndexArticleAdapter() }
+    val mAdapter by lazy {
+        IndexArticleAdapter()
+    }
+
     val indexArticle by lazy {
         indexViewModel.getIndexArticle(Observer {
             it.datas?.let {
@@ -47,6 +53,13 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
 
     override fun onCreateView(savedInstanceState: Bundle?) {
         super.onCreateView(savedInstanceState)
+
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            val item = mAdapter.getItem(position)
+            mActivity?.open<ArticleDetailActivity> {
+                putExtra(KEY_ARTICLE_URL, item.link)
+            }
+        }
 
         recyclerView.run {
             layoutManager = LinearLayoutManager(context)
@@ -75,8 +88,6 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
         indexArticle.bindToSmartRefreshLayout(refresh)
 
         indexArticle.begin()
-
-
 
 
     }

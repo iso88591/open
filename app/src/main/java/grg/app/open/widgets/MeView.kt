@@ -40,8 +40,8 @@ class MeView @JvmOverloads constructor(
         }
     }
 
-    val lineNum = 2
-    val spanNum = 4
+    val lineNum = 3
+    val spanNum = 3
     var lineOffset = 0f
     var spanOffset = 0f
     val pointList = ArrayList<PointF>(lineNum * spanNum)
@@ -50,6 +50,8 @@ class MeView @JvmOverloads constructor(
         super.onSizeChanged(w, h, oldw, oldh)
         lineOffset = width / lineNum.toFloat() * 0.8f
         spanOffset = height / spanNum.toFloat() * 1f
+
+        pointList.clear()
 
         for (line in 0 until lineNum) {
             for (span in 0 until spanNum) {
