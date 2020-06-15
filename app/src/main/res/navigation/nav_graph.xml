@@ -9,13 +9,17 @@
         android:id="@+id/indexFragment"
         android:name="grg.app.open.ui.fragment.IndexFragment"
         android:label="fragment_blank"
-        tools:layout="@layout/fragment_index" />
+        tools:layout="@layout/fragment_index" >
+        <action
+            android:id="@+id/action_indexFragment_to_squareFragment"
+            app:destination="@id/squareFragment" />
+    </fragment>
     <fragment
         android:id="@+id/squareFragment"
         android:name="grg.app.open.ui.fragment.SquareFragment"
-        android:label="BlankFragment2" />
-    <fragment
-        android:id="@+id/wanAndroidNavFragment"
-        android:name="grg.app.open.ui.fragment.WanAndroidNavFragment"
-        android:label="WanAndroidNavFragment" />
+        android:label="BlankFragment2" >
+        <action
+            android:id="@+id/action_squareFragment_to_indexFragment"
+            app:destination="@id/indexFragment" />
+    </fragment>
 </navigation>
