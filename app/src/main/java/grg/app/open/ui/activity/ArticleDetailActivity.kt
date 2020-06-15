@@ -23,6 +23,7 @@ class ArticleDetailActivity : AppCompatActivity(R.layout.activity_article_detail
 
         webView.loadUrl(article)
 
+
     }
 
 

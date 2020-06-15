@@ -19,34 +19,34 @@ class MyApplication : MultiDexApplication() {
         context = this.applicationContext
         app = this
 
-        registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
-            override fun onActivityPaused(activity: Activity) {
-
-            }
-
-            override fun onActivityStarted(activity: Activity) {
-            }
-
-            override fun onActivityDestroyed(activity: Activity) {
-            }
-
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-            }
-
-            override fun onActivityStopped(activity: Activity) {
-            }
-
-            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                val decorView = activity.window.decorView
-                if (decorView is ViewGroup) {
-                    decorView.addView(MeView(MyApplication.context), MeView.layoutParams)
-                }
-            }
-
-            override fun onActivityResumed(activity: Activity) {
-            }
-
-        })
+//        registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+//            override fun onActivityPaused(activity: Activity) {
+//
+//            }
+//
+//            override fun onActivityStarted(activity: Activity) {
+//            }
+//
+//            override fun onActivityDestroyed(activity: Activity) {
+//            }
+//
+//            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+//            }
+//
+//            override fun onActivityStopped(activity: Activity) {
+//            }
+//
+//            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+//                val decorView = activity.window.decorView
+//                if (decorView is ViewGroup) {
+//                    decorView.addView(MeView(MyApplication.context), MeView.layoutParams)
+//                }
+//            }
+//
+//            override fun onActivityResumed(activity: Activity) {
+//            }
+//
+//        })
 
     }
 
