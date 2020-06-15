@@ -19,7 +19,7 @@ class LoadingActivity : AppCompatActivity(R.layout.layout_loading) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        object : CountDownTimer(3000, 1000) {
+        object : CountDownTimer(500, 1000) {
             override fun onFinish() {
                 open<MainActivity> {  }
                 finish()

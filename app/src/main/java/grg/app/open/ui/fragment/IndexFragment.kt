@@ -15,10 +15,12 @@ import grg.app.open.app.KEY_ARTICLE_URL
 import grg.app.open.app.component.ObserverObservable
 import grg.app.open.app.base.BaseFragment
 import grg.app.open.app.base.SimpleDivideItemDec
+import grg.app.open.app.component.PageLiveDataList
 import grg.app.open.app.component.bindToSmartRefreshLayout
 import grg.app.open.app.component.open
 import grg.app.open.model.MainModel
 import grg.app.open.net.OOTransform
+import grg.app.open.net.bean.IndexArticle
 import grg.app.open.net.bean.IndexBanner
 import grg.app.open.ui.activity.ArticleDetailActivity
 import grg.app.open.widgets.SimpleBannerImageLoader
@@ -41,12 +43,31 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
         IndexArticleAdapter()
     }
 
-    val indexArticle by lazy {
-        indexViewModel.getIndexArticle(Observer {
-            it.datas?.let {
+    val re = Observer<IndexArticle> {
+        it.datas?.let {
+
+            if (indexArticle.lastOperator == PageLiveDataList.OPERATOR_REFRESH) {
+                mAdapter.setNewInstance(ArrayList(it))
+            } else {
                 mAdapter.addData(it)
             }
+
+        }
+    }
+
+    val indexArticle:PageLiveDataList<IndexArticle> by lazy {
+        indexViewModel.getIndexArticle(Observer {
+            it.datas?.let {
+                if(indexArticle.lastOperator == PageLiveDataList.OPERATOR_REFRESH){
+                    mAdapter.setNewInstance(ArrayList(it))
+                }else{
+
+                    mAdapter.addData(it)
+                }
+            }
         }, {
+
+
 
         })
     }
