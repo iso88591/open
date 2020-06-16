@@ -3,15 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_squareFragment_to_indexFragment"
+        android:id="@+id/indexFragment"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="首页"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_indexFragment_to_squareFragment"
+        android:id="@+id/squareFragment"
         android:icon="@drawable/ic_baseline_crop_square_24"
         android:title="分类"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/mine"
+        android:icon="@drawable/ic_baseline_supervisor_account_24"
+        android:title="我的" />
 
 </menu>

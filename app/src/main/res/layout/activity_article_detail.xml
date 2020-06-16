@@ -51,14 +51,22 @@
 
             <TextView
                 android:id="@+id/tvUrl"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="50dp"
+                android:layout_weight="1"
                 android:background="@null"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:lines="1"
                 android:textColor="#ffffff" />
+
+            <CheckBox
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/star_selector"
+                android:button="@null"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
 
         </LinearLayout>
 
