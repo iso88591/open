@@ -3,11 +3,14 @@ package grg.app.open.widgets
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import kotlinx.android.synthetic.main.activity_article_detail.*
 
 
 class LifeCycleWebView @JvmOverloads constructor(

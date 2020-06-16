@@ -43,30 +43,17 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
         IndexArticleAdapter()
     }
 
-    val re = Observer<IndexArticle> {
-        it.datas?.let {
-
-            if (indexArticle.lastOperator == PageLiveDataList.OPERATOR_REFRESH) {
-                mAdapter.setNewInstance(ArrayList(it))
-            } else {
-                mAdapter.addData(it)
-            }
-
-        }
-    }
-
-    val indexArticle:PageLiveDataList<IndexArticle> by lazy {
+    val indexArticle: PageLiveDataList<IndexArticle> by lazy {
         indexViewModel.getIndexArticle(Observer {
             it.datas?.let {
-                if(indexArticle.lastOperator == PageLiveDataList.OPERATOR_REFRESH){
+                if (indexArticle.lastOperator == PageLiveDataList.OPERATOR_REFRESH) {
                     mAdapter.setNewInstance(ArrayList(it))
-                }else{
+                } else {
 
                     mAdapter.addData(it)
                 }
             }
         }, {
-
 
 
         })
