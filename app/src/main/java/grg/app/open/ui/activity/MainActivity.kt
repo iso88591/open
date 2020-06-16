@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
 
         bottomNav.setupWithNavController(navController)
+//        navController.navigate()
+//
+//        navController.getNavigatorProvider().addNavigator(createFragmentNavigator());
 
     }
 
