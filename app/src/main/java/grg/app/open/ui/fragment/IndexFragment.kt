@@ -11,12 +11,15 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.youth.banner.Banner
 import grg.app.open.R
 import grg.app.open.adapter.IndexArticleAdapter
+import grg.app.open.app.ACTION_LOGIN
+import grg.app.open.app.ACTION_LOGOUT
 import grg.app.open.app.KEY_ARTICLE_URL
 import grg.app.open.app.component.ObserverObservable
 import grg.app.open.app.base.BaseFragment
 import grg.app.open.app.base.SimpleDivideItemDec
 import grg.app.open.app.component.PageLiveDataList
 import grg.app.open.app.component.bindToSmartRefreshLayout
+import grg.app.open.app.component.bus.post
 import grg.app.open.app.component.open
 import grg.app.open.model.MainModel
 import grg.app.open.net.OOTransform
