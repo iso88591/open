@@ -22,7 +22,7 @@ class JetPack :
     private object Version {
         const val kotlin = "1.3.72"
         const val x_appcompat = "1.1.0"
-        const val x_constraintLayout = "1.1.3"
+        const val x_constraintLayout = "2.0.0-beta7"
         const val core_ktx = "1.3.0"
         const val x_lifecycle = "2.2.0"
         const val activity_ktx = "1.1.0"

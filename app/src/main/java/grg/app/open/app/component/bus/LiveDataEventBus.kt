@@ -16,7 +16,7 @@ object LiveDataEventBus {
      */
     fun <D> subscribe(eventId: EventId): MutableLiveData<D?> {
         val live: MutableLiveData<D?> =
-            (busCollection[eventId] ?: MutableLiveData<D?>()) as MutableLiveData<D?>
+            (busCollection[eventId.actionId] ?: MutableLiveData<D?>()) as MutableLiveData<D?>
         busCollection.put(eventId.actionId, live)
         return live
     }
