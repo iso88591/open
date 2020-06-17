@@ -13,13 +13,7 @@ class PageLiveDataList<T> : LiveData<LiveData<T>>() {
 
     var lastOperator: Int = OPERATOR_REFRESH
     private var willResetPage = false
-    var ds:
-            (
-                (
-                nowPage: Int,
-                callBack: (nextPage: Int, t: LiveData<T>?) -> Unit
-            ) -> Unit
-            )? = null
+    var ds: ((nowPage: Int, callBack: (nextPage: Int, t: LiveData<T>?) -> Unit) -> Unit)? = null
 
     var dataResult: Observer<T>? = null
 
