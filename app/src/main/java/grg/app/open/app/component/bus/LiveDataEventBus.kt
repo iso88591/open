@@ -9,7 +9,7 @@ import java.lang.reflect.ParameterizedType
 
 object LiveDataEventBus {
 
-    val busCollection: HashMap<EventId, MutableLiveData<*>> = HashMap()
+    val busCollection: HashMap<Int, MutableLiveData<*>> = HashMap()
     private var afterText: (Editable?.() -> Unit)? = null
     /**
      * 订阅目标 id的事件
@@ -17,7 +17,7 @@ object LiveDataEventBus {
     fun <D> subscribe(eventId: EventId): MutableLiveData<D?> {
         val live: MutableLiveData<D?> =
             (busCollection[eventId] ?: MutableLiveData<D?>()) as MutableLiveData<D?>
-        busCollection.put(eventId, live)
+        busCollection.put(eventId.actionId, live)
         return live
     }
 
@@ -25,7 +25,7 @@ object LiveDataEventBus {
      * 发送指定 id 的事件对应
      */
     fun post(eventId: EventId, data: Any?) {
-        val live = busCollection[eventId]
+        val live = busCollection[eventId.actionId]
 
         if (data == null) {
             live?.postValue(null)
