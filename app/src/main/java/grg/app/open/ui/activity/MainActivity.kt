@@ -43,8 +43,21 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
          */
         motionLayout.apply {
             setTransition(R.id.start,R.id.end)
+
+
+
+
             transitionToEnd()
         }
+
+
+
+
+
+
+
+
+
 
 
     }
