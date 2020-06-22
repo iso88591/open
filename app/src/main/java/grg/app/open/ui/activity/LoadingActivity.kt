@@ -1,34 +1,48 @@
 package grg.app.open.ui.activity
 
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.view.WindowManager
-import android.widget.ProgressBar
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
+import androidx.constraintlayout.motion.widget.MotionLayout
 import grg.app.open.R
 import grg.app.open.app.component.open
-import grg.app.open.ui.activity.MainActivity
 
 class LoadingActivity : AppCompatActivity(R.layout.layout_loading) {
 
-    private val progressBar by lazy { findViewById<ProgressBar>(R.id.progressBar) }
 
+    private val motionLayout by lazy(LazyThreadSafetyMode.NONE) { findViewById<MotionLayout>(R.id.motionLayout) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        object : CountDownTimer(500, 1000) {
-            override fun onFinish() {
-                open<MainActivity> {  }
-                finish()
-            }
+        motionLayout.apply {
+            setTransition(R.id.start,R.id.end)
 
-            override fun onTick(millisUntilFinished: Long) {
+            transitionToEnd()
 
-            }
-        }.start()
+            setTransitionListener(object : MotionLayout.TransitionListener{
+                override fun onTransitionTrigger(
+                    p0: MotionLayout?,
+                    p1: Int,
+                    p2: Boolean,
+                    p3: Float
+                ) {
+                }
+
+                override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
+                }
+
+                override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
+                }
+
+                override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+                    open<MainActivity> {  }
+                    finish()
+                }
+
+
+            })
+
+        }
 
 
 

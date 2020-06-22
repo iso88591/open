@@ -17,6 +17,8 @@ import grg.app.open.app.KEY_ARTICLE_URL
 import grg.app.open.app.component.ObserverObservable
 import grg.app.open.app.base.BaseFragment
 import grg.app.open.app.base.SimpleDivideItemDec
+import grg.app.open.app.base.divideItemDec
+import grg.app.open.app.base.simpleDivideItemDec
 import grg.app.open.app.component.PageLiveDataList
 import grg.app.open.app.component.bindToSmartRefreshLayout
 import grg.app.open.app.component.bus.post
@@ -90,9 +92,15 @@ class IndexFragment : BaseFragment(R.layout.fragment_index) {
             })
         )
 
-        recyclerView.addItemDecoration(SimpleDivideItemDec {
+        recyclerView.simpleDivideItemDec {
             set(0, 0, 0, 1)
-        })
+        }
+
+
+        recyclerView.divideItemDec { rect, view, recyclerView, state ->
+            println("recyclerView滑动了="+recyclerView.scrollY)
+        }
+
 
         indexArticle.observe(this)
 
